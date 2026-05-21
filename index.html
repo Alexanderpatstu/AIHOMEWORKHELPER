@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Grade Calculator</h1>
+            <p>Calculate your grades with simple or weighted categories</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="simple">Simple Mode</button>
+            <button class="tab-btn" data-tab="weighted">Weighted Mode</button>
+        </div>
+
+        <!-- Simple Mode -->
+        <div class="tab-content active" id="simple">
+            <div class="categories" id="simpleCategories">
+                <div class="category">
+                    <div class="category-inputs">
+                        <input type="text" class="category-name" placeholder="Category name (e.g., Homework)" value="Homework">
+                        <input type="number" class="points-earned" placeholder="Points earned" value="0" min="0" step="0.1">
+                        <input type="number" class="max-points" placeholder="Max points" value="100" min="1" step="0.1">
+                        <button class="remove-btn" onclick="removeCategory(this, 'simple')">Remove</button>
+                    </div>
+                    <div class="category-percent">--%</div>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addCategory('simple')">+ Add Category</button>
+
+            <div class="result-section">
+                <div class="result">
+                    <span class="result-label">Overall Grade:</span>
+                    <span class="result-grade" id="simpleGrade">--</span>
+                    <span class="result-percent" id="simplePercent">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weighted Mode -->
+        <div class="tab-content" id="weighted">
+            <div class="weight-notice">⚠️ Weights must add up to 100%</div>
+            <div class="weight-total" id="weightTotal">Total Weight: 0%</div>
+
+            <div class="categories" id="weightedCategories">
+                <div class="category">
+                    <div class="category-inputs">
+                        <input type="text" class="category-name" placeholder="Category name" value="Homework">
+                        <input type="number" class="points-earned" placeholder="Points earned" value="0" min="0" step="0.1">
+                        <input type="number" class="max-points" placeholder="Max points" value="100" min="1" step="0.1">
+                        <button class="remove-btn" onclick="removeCategory(this, 'weighted')">Remove</button>
+                    </div>
+                    <div class="weight-section">
+                        <label for="weight">Weight:</label>
+                        <input type="range" class="weight-slider" min="0" max="100" value="50" step="1">
+                        <input type="number" class="weight-input" value="50" min="0" max="100" step="1">
+                        <span class="weight-display">50%</span>
+                    </div>
+                    <div class="category-percent">--%</div>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addCategory('weighted')">+ Add Category</button>
+
+            <div class="result-section">
+                <div class="result">
+                    <span class="result-label">Weighted Grade:</span>
+                    <span class="result-grade" id="weightedGrade">--</span>
+                    <span class="result-percent" id="weightedPercent">--</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
